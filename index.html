@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head> 
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+		
+<!-- end ng code ko -->  
+	  
+	
+    
+<link rel="stylesheet" href="css/themes/my-custom-theme.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+	
+	
+	  
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+	
+		 <style>
+         body {
+         background:#ddd;
+         }
+		 #mapCanvas {
+    width: 150px;
+    height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+  }
+  	 .pic{
+    width: 300px;
+    height: 300px;
+	border: 1px;
+  }
+  #panicbutton{
+		position: relative;
+		display: block;
+		left: 85%;
+	}
+
+ #panicbutton2{
+		position: relative;
+		display: block;
+		left: 85%;
+	}
+	
+
+      </style>
+    </head>
+    <body>
+
+
+<div data-role="page" id="one">
+<div data-role="panel" id="myPanel" data-display="overlay" data-swipe-close="true" data-theme="a">
+    		<ul data-role="listview" data-icon="false" data-theme="a">
+			
+			
+	        <li data-role="list-divider" data-theme="">MENU</li>  
+	            <li><a href="#three" class="ui-btn ui-btn-a ui-shadow ui-btn-icon-right ui-icon-info">Social Feeds</a></li>
+	          <li><a href="#userguide" class="ui-btn ui-btn-a ui-shadow ui-btn-icon-right ui-icon-info">User Guide</a></li>
+
+	          <li><a href="#myreports" onClick="reports1()" class="ui-btn ui-btn-a ui-shadow ui-btn-icon-right ui-icon-info">My Reports</a></li>  			  
+	          
+			<li><a href="javascript:logoutaccount();" class="ui-btn ui-shadow ui-btn-icon-right ui-icon-action">Logout</a></li>
+			
+						
+			</ul>
+	</div><!-- /panel -->
+
+	<div data-role="header">
+        <a href="#myPanel" class="ui-btn ui-icon-bars ui-btn-icon-notext " style="padding:0;border:0;background:transparent;"></a>
+		<h1>SOS MANILA</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<div id="panicbutton">
+		
+		<a href="sms:+639461461134?body=I am in emergency situation, I need help." ><img id="panicpic" src="images/panicbutton.png" style="width: 15%;" /></a>
+		</div>
+		<div id="panicbutton2" style="display:none">
+            <a href="#popupStop" data-rel="popup" data-position-to="window" data-transition="pop"><img id="panicpic2" src="images/panicbutton_disabled.png" style="width: 15%;" /></a>
+		</div>
+		
+		<!--<p><a href="#two" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">Personal Alarm</a></p>-->
+			
+	
+	<a    href="#both" data-rel="popup" data-transition="fade" data-position-to="window"><img src="images/logo-small.png"  id="myLogo" style="margin-top: 7%; width:70%;margin-left:auto;margin-right:auto;display:block"></a>
+		
+		
+		<div id="both" data-role="popup" data-theme="a" data-overlay-theme="b">
+  		<center>	
+		<!-- dalawang button -->
+		<a   id="camera" onClick="next1();" ><img src="images/logo-camera.png"  id="myLogo" style="margin-top: 7%; width:45%;margin-left:auto;margin-right:auto;"></a>
+		<a   id="camera2" onClick="next1();" ><img src="images/logo-album.png"  id="myLogo" style="margin-top: 7%; width:45%;margin-left:auto;margin-right:auto;"></a>
+		
+		<!-- end dalawang button -->
+		</center>
+
+		</div>
+	
+	
+		<a id="btnCall" href="tel:09461461134" class="ui-btn ui-shadow ui-corner-all ui-icon-phone ui-btn-icon-left ui-btn-d">Emergency</a>
+		
+		<center>	<label id="lugar1"></label></center>
+
+
+
+
+
+		</div><!-- /content -->
+
+	<!-- <div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div>/footer -->
+</div><!-- /page one -->
+
+
+
+
+<!-- Start of second page: #two -->
+
+
+<div data-role="page" id="two" data-theme="a">
+<div data-role="header">
+    <a href="#one" class="ui-btn ui-icon-back ui-btn-icon-notext" style="padding:0;border:0;background:transparent;"></a><h1>Submit Project </h1>
+    <a href="" onclick="lipat();" class="ui-btn ui-icon-home ui-btn-icon-notext" style="padding:0;border:0;background:transparent;"></a>
+		
+	</div><!-- /header -->
+	
+<div data-role="main" class="ui-content">
+
+	
+<div id="txtDisplayUser" ></div> <div id="txtDateTime"></div>
+<!--code ko-->
+    	
+        
+		<br><br>	
+  
+	<img src="" id="picc"  class="pic" style="margin-left: auto; width:100%; height:80%; margin-right: auto;"   />	
+	 
+<br>
+	
+	
+ <label for="txtDescription">Description:</label>
+	<input type="text" name="txtDescription" id="txtDescription" />
+
+ <label for="txtdate">Project Deadline:</label>
+	<input type="date" name="txtdate" id="txtdate" />
+
+	
+ <label for="txtamount">Project Amount:</label>
+	<input type="text" name="txtamount" id="txtamount" />
+	
+	
+	<input type="submit" onClick="next2();" value="Send" id="submit" data-theme="d" />
+		 
+		   
+		   </div>  
+		   
+		   </div>
+
+<!-- /page two -->
+
+
+<div data-role="page" id="four">
+
+
+
+	<div data-role="header">
+        <a href="#two" class="ui-btn ui-icon-back ui-btn-icon-notext" style="padding:0;border:0;background:transparent;"></a>
+		<h1>Summary</h1>
+        <a href="" onclick="lipat();" class="ui-btn ui-icon-home ui-btn-icon-notext" style="padding:0;border:0;background:transparent;"></a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		<br>           
+<table border="0"  style="  margin-left: auto;  margin-right: auto;">
+<tr>
+<td>	 <img src="" class="pic" id="picc1" border="1"  style="margin-left: auto; width:100%; height:40%;  margin-right: auto;"  />	
+</td>
+
+<td ><div id="mapCanvas"     ></div>
+</td>
+</tr>
+</table><br>
+			
+<p id="pdate">	Project Deadline: </p>
+<p id="pDescription"> Description:</p>
+
+<p id="pAmount"> Project Amount:</p>
+ <br> 
+       <input type="button" onClick="next3();" value="Send" id="submit" data-theme="d" >
+	   
+	   <br>
+	   
+	
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+
+
+
+
+
+<div data-role="page" id="five">
+
+
+
+	<div data-role="header">
+	<h1>Sending</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+   
+	   
+
+<div id="ew">
+<center>
+ <img src="images/ajax-loader.gif"  />
+  </center>
+Report Sending Please Wait... </div>
+
+
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="myreports">
+
+	<div data-role="header">
+	
+		<a href="" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-notext"></a>
+	<h1>My Reports</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+   
+	   
+
+<div id="reports1" style=" text-align: left;">
+<center>
+ <img src="images/ajax-loader.gif"  />
+  <br>
+ Loading Please Wait... 
+ 
+ </center></div>
+
+
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="three">
+
+
+
+	<div data-role="header">
+		<a href="" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-notext"></a>
+		<h1>News Feeds</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		<div id="twitter-feed"></div>
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+<div data-role="page" id="userguide">
+
+
+
+	<div data-role="header">
+		<a href="" data-rel="back" class="ui-btn ui-icon-back ui-btn-icon-notext"></a>
+		<h1>User Guide</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		<img src="images/construction.png" style="width:70%;margin-left:auto;margin-right:auto;display:block" />
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+
+
+
+
+<div data-role="page" id="mgahidden">
+
+
+
+	<div data-role="header">
+		<a href=""  class="ui-btn ui-icon-back ui-btn-icon-notext"></a>
+		<h1>mga hidden</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+	         <p id="info2" style="display:none;"></p>
+			 <p id="info33" style="display:none;"></p>
+			    <p id="info" style="display:none;"></p>
+<input type="hidden" id="asar">
+ <input type="hidden" id="pic1" />
+ <input type="hidden" id="pic2" >
+ <input type="hidden" id="pic3" />
+
+ <input type="hidden" id="hidlat" />
+
+  <input type="hidden" id="sample" />
+  <div id="infoPanel"  style="display:none;" >
+    <b>Marker status:</b>
+    <div id="markerStatus"><i>Click and drag the marker.</i></div>
+    <b>Current position:</b>
+    
+    <b>Closest matching address:</b>
+    <div id="address"></div>
+  </div>
+  
+	
+	   <div id="deviceready" class="blink">
+                <p class="event listening" style="display:none;" >Connecting to Device</p>
+                <p class="event received" style=" display:none;">Device is Ready</p>
+            </div>
+	
+	
+	
+</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+
+
+<!-- code ko -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		
+      <script src="js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="js/Toast.js"></script>
+   <script type="text/javascript">
+getLocation();
+	var timerId = 0;
+var incidentV ;
+			var Description;
+		
+	   var name55;
+var loc2;
+var cat2 ;
+var cat22 ;
+var address2 ;
+var date2;
+var long2 ;
+var lat2;
+
+var amount;
+var pic1;
+var skip2 = 0;
+
+var sampleV;
+var Rincident ;
+
+var geocoder = new google.maps.Geocoder();
+
+  var gg;
+  var gg1;
+function geocodePosition(pos) {
+  geocoder.geocode({
+    latLng: pos
+  }, function(responses) {
+    if (responses && responses.length > 0) {
+      updateMarkerAddress(responses[0].formatted_address);
+    } else {
+      updateMarkerAddress('Cannot determine address at this location.');
+    }
+  });
+}
+
+function updateMarkerStatus(str) {
+  document.getElementById('markerStatus').innerHTML = str;
+}
+
+function updateMarkerPosition(latLng) {
+  document.getElementById('info2').innerHTML = [
+    latLng.lat(),
+    latLng.lng()
+  ].join(', ');
+}
+
+function updateMarkerAddress(str) {
+document.getElementById('lugar1').innerHTML = str;
+  loc2 = str;
+  
+}
+
+ function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.watchPosition(showPosition);
+    }
+  else{}
+  }
+function showPosition(position)
+  {
+	
+  gg =position.coords.latitude ;
+ gg1 =  position.coords.longitude;
+  
+  
+  long2 =position.coords.latitude;
+  lat2= position.coords.longitude;
+window.localStorage.setItem("longlat",long2);
+
+window.localStorage.setItem("lat",lat2);
+initialize();
+
+  }
+
+function initialize() {
+
+  
+  var latLng = new google.maps.LatLng(gg,gg1);
+ 
+ var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+    zoom: 12,
+    center: latLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  var marker = new google.maps.Marker({
+    position: latLng,
+    title: 'Point A',
+    map: map
+  });
+
+ 
+  
+  // Update current position info.
+  updateMarkerPosition(latLng);
+  geocodePosition(latLng);
+
+  // Add dragging event listeners.
+  google.maps.event.addListener(marker, 'dragstart', function() {
+    updateMarkerAddress('Dragging...');
+  });
+
+  google.maps.event.addListener(marker, 'drag', function() {
+    updateMarkerStatus('Dragging...');
+    updateMarkerPosition(marker.getPosition());
+  });
+
+  google.maps.event.addListener(marker, 'dragend', function() {
+    updateMarkerStatus('Drag ended');
+    geocodePosition(marker.getPosition());
+  });
+}
+
+
+
+
+ app.initialize();
+
+
+
+function logoutaccount()
+	{
+	localStorage.removeItem("datausername");
+	localStorage.removeItem("dataemail");
+	
+window.location.replace("index.html");
+	// $.mobile.changePage("index.html", { transition: "fade", changeHash: true});
+	}
+
+
+
+// redirect page 
+	
+function lipat(){
+window.location.replace("index.html");
+}
+
+function Back1(){
+window.location.replace("#one");
+}
+function Back2(){
+window.location.replace("#two");
+}
+
+// nextpage page 1
+function next1(){
+
+window.location.replace("#two");
+
+}
+
+
+
+
+
+// nextpage page 2
+  function next2(){
+
+window.location.replace("#four");
+			Description  = document.getElementById("txtDescription").value;
+		amount = document.getElementById("txtamount").value;
+		date2 = document.getElementById("txtdate").value;
+		
+			pic1 =  document.getElementById("info33").innerHTML;
+		
+		 document.getElementById("pAmount").innerHTML ="Project Amount: " + amount;
+		
+		 document.getElementById("pDescription").innerHTML ="Description: " + Description;
+		 document.getElementById("pdate").innerHTML ="Project Deadline: " + date2;
+		
+		
+	
+	}
+
+
+
+function next3(){
+		
+		    
+var pic = pic1;	
+
+                window.location.replace("#five");
+
+				$.ajax({
+					url: "http://iligtas.ph/herstory/addproject.php",
+					type: "POST",
+					data: {"txtPhotoProject":pic,"txtDateTime":date2,"txtDescription":Description,"txtamount":amount,"loc2":loc2},
+					success:function(data){
+					window.plugins.toast.showLongBottom('Project Sent!', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+					lipat();
+	}
+	});	
+		   
+			}
+			
+
+
+			
+
+			$(document).ready(function(){
+  
+  
+});
+
+
+
+</script>
+<!-- end code ko -->
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+</body>
+</html>
