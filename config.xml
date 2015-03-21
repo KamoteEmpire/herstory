@@ -5,12 +5,12 @@
     version     = "1.0">
 
 
-    <name>HerStory</name>
+    <name>HERstory</name>
     
     <content src="index.html"/>
     <icon src="icon.png" width="256" height="256" />
     
-    <description>HerStory
+    <description>HERstory
     </description>
     
    
