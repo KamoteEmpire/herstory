@@ -165,17 +165,27 @@
 		<!-- /picture sa unang page -->
 <br>
 	
+	<!--<label for="txtamount">Select VAW Incident:</label>
+	<input type="text" name="txtamount" id="txtamount" />-->
 	
- <label for="txtDescription">Description:</label>
+	<label for="txtamount" class="select">Select VAW Incident:</label>
+<select name="txtamount" id="txtamount">
+<option value="DatingViolence">Dating violence</option>
+<option value="DomesticAndIntimatePartnerViolence">Domestic and intimate partner violence</option>
+<option value="EmotionalAbuse">Emotional abuse</option>
+<option value="HumanTrafficking">Human trafficking</option>
+<option value="SexualAssaultAndAbuse">Sexual assault and abuse</option>
+<option value="Stalking">Stalking</option>
+<option value="ViolenceAgainstImmigrantAndRefugeeWomen">Violence against immigrant and refugee women</option>
+<option value="ViolenceAgainstWomenAtWork">Violence against women at work</option>
+</select>
+	
+ <label for="txtDescription">Facts:</label>
 	<input type="text" name="txtDescription" id="txtDescription" />
 
- <label for="txtdate">Project Deadline:</label>
+ <label for="txtdate">Date Taken:</label>
 	<input type="date" name="txtdate" id="txtdate" />
 
-	
- <label for="txtamount">Project Amount:</label>
-	<input type="text" name="txtamount" id="txtamount" />
-	
 	
 	<input type="submit" onClick="next2();" value="Send" id="submit" data-theme="d" />
 		 
